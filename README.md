@@ -46,6 +46,16 @@ Run client:
 
 ## Usage
 
+Client starts and tries to connect to all nodes.
+If connection is successful, client gives each node number of chunks to encode equal to specified slots for that node.
+After completing encode, node send chunk back to client.
+
+After all chunks are encoded, all chunks are concatenated into final file and all non-video streams are added back.
+
+It's important to notice chat encode parameters takes ffmpeg parameters for encoding.
+So syntax syntax is identical between them.
+For example : `--encoder-params " -c:v libx264 -preset slower -crf 23"`
+will encode file to AVC with those settings.
 
 
 ### Client
