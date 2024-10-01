@@ -5,7 +5,7 @@ A distributed video encoding system built with Rust, gRPC, and FFmpeg.
 
 In this example I transcode couple of minutes of gameplay that I recorded on  2 nodes that are setup on different computers
 
-[![](presentation/main.jpg)](https://www.youtube.com/watch?v=mxG5Y8sUAo)
+[![](presentation/main.jpg)](https://www.youtube.com/watch?v=mxG5Y8sUAoI)
 
 
 ## Key Features
