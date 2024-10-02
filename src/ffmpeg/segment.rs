@@ -37,10 +37,13 @@ pub fn segment_video(
     debug!("Output pattern: {:?}", output_pattern);
 
     let binding = segment_duration.to_string();
+    let inp = input_path.to_string_lossy();
+    let output_pattern = output_pattern.to_string_lossy();
+
     let ffmpeg_args = vec![
         "-hide_banner",
         "-i",
-        input_path.to_str().unwrap(),
+        &inp,
         "-y",
         "-an", // don't copy audio
         "-sn", // don't copy subtitles
@@ -55,7 +58,7 @@ pub fn segment_video(
         "segment",
         "-reset_timestamps",
         "1",
-        output_pattern.to_str().unwrap(),
+        &output_pattern,
     ];
 
     debug!("FFmpeg command: ffmpeg {:?}", ffmpeg_args);

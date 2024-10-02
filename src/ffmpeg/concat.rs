@@ -41,6 +41,10 @@ pub fn concatenate_videos_and_copy_streams(
         .collect();
     fs::write(&temp_file_list, file_list_content)?;
 
+    let temp_st = temp_file_list.to_string_lossy();
+    let original_input = original_input.to_string_lossy();
+    let output_file = output_file.to_string_lossy();
+
     // Prepare FFmpeg command
     let ffmpeg_args = vec![
         "-f",
@@ -48,16 +52,16 @@ pub fn concatenate_videos_and_copy_streams(
         "-safe",
         "0",
         "-i",
-        temp_file_list.to_str().unwrap(),
+        &temp_st,
         "-i",
-        original_input.to_str().unwrap(),
+        &original_input,
         "-map",
         "0:v", // map video from concatenated segments
         "-map",
         "1", // map all streams from original input
         "-c",
         "copy",
-        output_file.to_str().unwrap(),
+        &output_file,
     ];
 
     debug!("FFmpeg command: ffmpeg {:?}", ffmpeg_args);
