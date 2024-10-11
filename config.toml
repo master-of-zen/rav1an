@@ -1,0 +1,12 @@
+[client]
+node_addresses = ["http://127.0.0.1:50051"]
+encoder_params = ["-c:v", "libx264", "-preset", "faster", "-crf", "23"]
+
+[node]
+address = "0.0.0.0:50051"
+node_address = "0.0.0.0:50051"
+temp_dir = "./server_50051"
+
+[processing]
+segment_duration = 10.0
+temp_dir = "./temp"
